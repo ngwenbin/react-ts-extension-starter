@@ -9,11 +9,7 @@ difference is this starter integrates some foundational code and manifest
 configuration for v3 which I couldn't find in the boilerplate examples they
 offer.
 
-## Notes
-
-In my tinkering with this starter there are a few notes that I find helpful.
-
-### 1. Manually bundle files
+### Manually bundle files
 
 If you reference files that can't be automatically recognized, use the
 `web_accessible_resources` property in manifest to explicitly bundle them.
@@ -31,37 +27,6 @@ If you reference files that can't be automatically recognized, use the
       ]
     }
   ]
-```
-
-### 2. Split v2 and v3 manifests
-
-Though a little hacky, I have had some success generating v2 and v3 manifests
-with a little customization to this starter. The approach can be
-[seen on my extension Link Roamer](https://github.com/rossmoody/link-roamer/blob/main/rollup.config.js).
-
-The premise is pretty simple: hook into a specific string value throughout your
-app and programmatically fire v2 or v3 API methods depending on the build
-environment.
-
-In this way,
-[functions can be conditionally](https://github.com/rossmoody/link-roamer/blob/main/src/scripts/Chrome.ts)
-compiled.
-
-```js
-if ('isV3Manifest') {
-  return (
-    await chrome.scripting.executeScript({
-      target: { tabId },
-      func,
-    })
-  )[0].result
-} else {
-  return (
-    await browser.tabs.executeScript(tabId, {
-      code: `(${func})()`,
-    })
-  )[0]
-}
 ```
 
 ## Development
@@ -97,7 +62,3 @@ This will create a ZIP file with your package name and version in the `releases`
 folder.
 
 ---
-
-## More apps by me
-
-I like making things. [Check out what I'm up to lately](https://rossmoody.com).
