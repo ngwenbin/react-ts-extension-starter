@@ -34,7 +34,7 @@ If you reference files that can't be automatically recognized, use the
 For development with automatic reloading:
 
 ```sh
-npm run start
+yarn dev
 ```
 
 Open the [Extensions Dashboard](chrome://extensions), enable "Developer mode",
